@@ -1,0 +1,105 @@
+@use "sass:math";
+@use "sass:string";
+@use '../../common/variables' as var;
+@use '../../common/' as *;
+@use '../../common/color' as color;
+@use '../flex/mixin' as flex;
+
+$_sizes : (
+  '88x31',
+  '120x60',
+  '120x240',
+  '120x600',
+  '125x125',
+  '160x600',
+  '167x50',
+  '180x150',
+  
+  '200x200',
+  '234x60',
+  '250x250',
+  '250x360',
+  '240x400',
+
+  '300x250',
+  '300x50',
+  '300x600',
+  '300x100',
+  '300x600',
+  '320x50',
+  '320x100',
+  '320x480',
+  '336x280',
+
+  '468x60',
+  '480x320',
+
+  '580x400',
+
+  '728x90',
+  '750x100',
+  '750x200',
+  '750x300',
+  '768x1024',
+
+  '930x180',
+  '950x90',
+  '970x90',
+  '970x250',
+  '980x120',
+  '980x90',
+
+  '1024x768',
+);
+
+.arcad{
+    height: auto;
+    position: relative;
+    background-color: #f2f2f2;
+    &.left{
+      margin-right: auto;
+    }
+    &.right{
+      margin-left: auto;
+    }
+    &.center{
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &.size{
+      @each $name in $_sizes {
+        $_w : nth(str-split($name, "x"), 1);
+        $_h : nth(str-split($name, "x"), 2);
+        &_#{$name}{
+          width: rem(number($_w));
+          max-width: 100%;
+          min-height: rem(number($_h));
+        }
+      }
+    }
+    .dfpAd{
+      &:before {
+        position: absolute;
+        content: "Advertisement";
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        height:100%;
+        margin: auto;
+        font-size: 15px;
+        text-align: center;
+        color: #222;
+        z-index: 0;
+      }
+      div, iframe{
+        position: relative;
+        z-index: 1;
+      }
+    }
+  @include mob {
+    display: none;
+  }
+}
