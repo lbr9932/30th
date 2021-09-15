@@ -12,7 +12,6 @@ img{
     transition-duration: 0;
     transition-delay: 0.3s;
 }
-@include pc-xl {:root{font-size: vw(13, 2000);}}
 @include mob(false, 0.5){:root{font-size: vw(16, 375);}}
 
 @include print(){

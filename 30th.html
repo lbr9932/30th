@@ -56,6 +56,8 @@
 
 <script type="text/javascript" src="https://www.kclf.org/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="https://www.kclf.org/js/swiper.min_453.js"></script>
+<script src="https://www.kclf.org/js/waypoints.min.js"></script>
+<script src="https://www.kclf.org/js/jquery.counterup.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
@@ -75,6 +77,21 @@
 <body>
 
 <div class="th30">
+    <header class="h">
+        <div class="h_wrap">
+            <div class="row ai_c">
+                <a href="/">
+                    <img src="https://www.kclf.org/images/common/logo_on.png" alt="로고">
+                </a>
+                <ul class="ml_auto">
+                    <li><a href="#page1">백어재 30주년 소개</a></li>
+                    <li><a href="#page2">축하메세지</a></li>
+                    <li><a href="#page3">이벤트</a></li>
+                    <li><a href="#page4">후원하기</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
     <section class="visual_box">
 
         <div class="wrap upAni">
@@ -105,7 +122,15 @@
                 <div class="video_con">
                     <div class="video_img"><img src="/img/video.jpg" alt="유튜브 비디오 섬넹리"></div>
                     <div class="video_iframe">
-                        <iframe src="" frameborder="0"></iframe>
+                        <div id="player"></div>
+                    </div>
+                    <div class="video_loding">
+                        <div class="dots dot8">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
                     </div>
                     <button type="button" class="video_btn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 870 1024"><path d="M870.4 512l-870.4-512v1024l870.4-512z"></path></svg>
@@ -125,7 +150,7 @@
                             <img src="/img/illust_1.png" alt="활동을 시작한 해">
                             <figcaption>활동을 시작한 해</figcaption>
                         </figure>
-                        <p><b>1991</b>년<b>11</b>월<b>21</b>일</p>
+                        <p><b class="number">1991</b>년<b class="number">11</b>월<b class="number">21</b>일</p>
                     </div>
                 </li>
                 <li class="col_">
@@ -134,8 +159,8 @@
                             <img src="/img/illust_2.png" alt="함께한 후원자">
                             <figcaption>함께한 후원자</figcaption>
                         </figure>
-                        <p>개인<b>74692</b>명</p>
-                        <p>기업&middot;단체<b>8,021</b>곳</p>
+                        <p>개인<b class="number">74,692</b>명</p>
+                        <p>기업&middot;단체<b class="number">8,021</b>곳</p>
                     </div>
                 </li>
                 <li class="col_">
@@ -144,7 +169,7 @@
                             <img src="/img/illust_3.png" alt="함께한 환아와 가족">
                             <figcaption>함께한 환아와 가족</figcaption>
                         </figure>
-                        <p><b>13264</b>명</p>
+                        <p><b class="number">13,264</b>명</p>
                     </div>
                 </li>
                 <li class="col_">
@@ -153,8 +178,8 @@
                             <img src="/img/illust_4.png" alt="함께 만든 공간족">
                             <figcaption>함께 만든 공간</figcaption>
                         </figure>
-                        <p>소아암센터<b>4</b>개소</p>
-                        <p>소아암쉼터<b>4</b>개소</p>
+                        <p>소아암센터<b class="number">4</b>개소</p>
+                        <p>소아암쉼터<b class="number">4</b>개소</p>
                     </div>
                 </li>
                
@@ -179,7 +204,7 @@
             </div>
         </div>
     </section>
-    <section class="massage_box">
+    <section class="massage_box" id="page1">
         <div class="wrap">
             <div class="th30_tit_box upAni">
                 <p class="th30_tit_sub">Congratulatory Messages</p>
@@ -246,7 +271,7 @@
 
         </div>
     </section>
-    <section class="event1_box">
+    <section class="event1_box" id="page2">
         <div class="wrap">
             <div class="th30_tit_box upAni">
                 <div class="th30_tit_mark"><span>EVENT 1</span></div>
@@ -301,7 +326,7 @@
             </div>
         </div>
     </section>
-    <section class="event2_box">
+    <section class="event2_box" id="page3">
         <div class="wrap">
             <div class="th30_tit_box upAni">
                 <div class="th30_tit_mark"><span>EVENT 2</span></div>
@@ -472,7 +497,7 @@
             </div>
         </div>
     </section>
-    <section class="event_bottom_box fw_wrap">
+    <section class="event_bottom_box fw_wrap" id="page4">
         <div class="ebb_con1">
             <div class="wrap">
                 <div class="row ai_c jc_sb upAni">
@@ -488,8 +513,8 @@
         </div>
         <div class="ebb_con2">
             <div class="wrap">
-                <div class="row ai_c">
-                    <div class="col_12 col_md_24">
+                <div class="row ai_c upAni">
+                    <div class="col_ col_md_24">
                         <h2>소아암 어린이들과 함께하기</h2>
                     </div>
                     <div class="col_ col_md_24 ml_auto">
@@ -578,13 +603,13 @@
                         </tr>
                     </table>
                     <div class="row wp_30 pt_45 attend_popup_fm">
-                        <div class="col_12">
+                        <div class="col_12 col_md_24">
                             <div>
                                 <label for="">이름</label>
                                 <input type="text" class="attend_popup_inp">
                             </div>
                         </div>
-                        <div class="col_12">
+                        <div class="col_12 col_md_24">
                             <div>
                                 <label for="">휴대전화</label>
                                 <div class="attend_popup_phon">
@@ -645,21 +670,21 @@
                         <li class="questions c_1" style="display: none;">
                             <div class="quiz_popup_text">
                                 <span class="quiz_popup_num">2</span>
-                                <span class="quiz_popup_txt">소아암 어린이들이 건강하고 행복한 삶을 살 수 있도록 함께하는 비영리 기관</span>
+                                <span class="quiz_popup_txt">아직 다 자라지 아니한 어린 닭. 닭의 새끼를 이르는 말</span>
                             </div>
                             <input type="text" class="quiz_popup_inp" placeholder="정답을 입력해주세요."/>
                         </li>
                         <li class="questions c_2" style="display: none;">
                             <div class="quiz_popup_text">
                                 <span class="quiz_popup_num">3</span>
-                                <span class="quiz_popup_txt">소아암 어린이들이 건강하고 행복한 삶을 살 수 있도록 함께하는 비영리 기관</span>
+                                <span class="quiz_popup_txt">소아암 치료방법의 하나로 자신의 조혈모세포를 제거한 다음 새로운 조혈모세포를 이식하는 치료</span>
                             </div>
                             <input type="text" class="quiz_popup_inp" placeholder="정답을 입력해주세요."/>
                         </li>
                         <li class="questions r_2" style="display: none;"> 
                             <div class="quiz_popup_text">
                                 <span class="quiz_popup_num">4</span>
-                                <span class="quiz_popup_txt">소아암 어린이들이 건강하고 행복한 삶을 살 수 있도록 함께하는 비영리 기관</span>
+                                <span class="quiz_popup_txt">‘구 양배추, 현 000’로 현재 유퀴즈에 메인 진행자이며 ‘아기자기’로 불리는 사람</span>
                             </div>
                             <input type="text" class="quiz_popup_inp" placeholder="정답을 입력해주세요."/>
                         </li>
@@ -678,6 +703,15 @@
     </div>
 </div>
 
+<div class="load">
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+
+    <div>
+
+    </div>
+</div>
+
 </div>
 
 
@@ -693,126 +727,128 @@
     if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
         isIe = true;
     }
+   
+
     gsap.registerPlugin(ScrollTrigger);
+
+    var resizeB = (!isMobile) ? true : false; 
+    var scrollWidth = window.innerWidth-$(document).width();
+    var upAni = document.querySelectorAll('.upAni');
+
+    gsap.set('.upAni', {visibility: 'hidden'});
+    $('body').css('overflow', 'hidden');
+    gsap.set('.th30',{width:'calc(100% - ' + scrollWidth + 'px)'});
+   
+    $(window).load(function(){
+        
+        gsap.to('.load .box', 0.8, {
+            width:0,
+            ease: Power1.none,
+            delay:1,
+            onComplete : function(){
+                $('.load').remove();
+                $('body').css('overflow', 'visible');
+                gsap.set('.th30',{width:'100%'});
+            }
+        });
+        gsap.set('.upAni', {visibility: 'hidden'});
+
+        upAni.forEach(function(el){
+            var anim = gsap.from(el, {duration: 1, autoAlpha: 0, y: 50, x:0});
+            ScrollTrigger.create({
+                trigger: el,
+                animation: anim,
+                start: "center bottom",
+                end: "bottom top",
+                toggleActions: 'play none none none',
+                once: true,
+                ease: Power3.easeOut,
+            });
+        });
+    });
+
+
+
+                
+        var headerH = 0;
+        var lastScrollTop = 0;
+        $(function(){
+           
+
+            headerH = $(".h").height();
+
+
+            document.addEventListener("scroll", function() {
+                var currentPos = document.documentElement.scrollTop;
+                if(currentPos > headerH) {
+                    $(".h:not(._fixed)").addClass('_fixed');
+                }else{
+                    $(".h._fixed").removeClass('_fixed');
+                    
+                }
+                lastScrollTop = currentPos;
+            })
+        });
+
     
 
- 
-    var ani1 = document.querySelectorAll('.upAni');
-    ani1.forEach(function(el){
-		var anim = gsap.from(el, {duration: 1, autoAlpha: 0, y: 50, x:0});
-		ScrollTrigger.create({
-			trigger: el,
-			animation: anim,
-			start: "bottom bottom",
-			end: "bottom top",
-			toggleActions: 'play none none none',
-			once: true,
-            ease: Power3.easeOut
-		});
-	});
-    var ani1;
-    var ani2;
-    var ani3;
+      
 
-    ani1 = TweenMax.to(".groups_img .ani1", 4, {y:"20", scale:0.95, repeat:-1, yoyo:true}).pause();
-    ani2 = TweenMax.to(".groups_img .ani2", 3, {y:"-30", scale:0.9, repeat:-1, yoyo:true}).pause();
-    ani3 = TweenMax.to(".groups_img .ani3", 4.5, {y:"60", scale:1.1, repeat:-1, yoyo:true}).pause();
+
+    var ani1 = TweenMax.to(".groups_img .ani1", 4, {y:"20", scale:0.9, repeat:-1, yoyo:true}).pause(0);
+    var ani2 = TweenMax.to(".groups_img .ani2", 3, {y:"-30", scale:0.85, repeat:-1, yoyo:true}).pause(0);
+    var ani3 = TweenMax.to(".groups_img .ani3", 4.5, {y:"60", scale:1.1, repeat:-1, yoyo:true}).pause(0);
 
     var moveAni;
     if(!isIe){
+        ani1.resume();
+        ani2.resume();
+        ani3.resume();
         $('body').mousemove(function(e) {
             var x = e.offsetX / window.innerWidth;
             var y = e.offsetY / window.innerHeight;
             var $box = $(".groups_img div");
 
             x = x * 60;
+            y = y * -10;
 
             if(moveAni != null){
                 moveAni.pause();
             }
 
             moveAni = TweenMax.to($box, 0.5, {
-            x: x,
+                x: x,
+                y: y,
             ease: Power0.easeNone
             });
         });
-        gsap.from(".group_1", {
-            y:-400,
-            opacity:0,
-            scrollTrigger:{
-                trigger:'.visual_box',
-                start: "bottom bottom",
-                end: "+=80%",
-                scrub: true, 
-                once: true,
-            }
-        });
-
-        gsap.from(".group_2", {
-            y:-400,
-            opacity:0,
-            scrollTrigger:{
-                trigger:'.visual_box',
-                start: "bottom bottom-=30%",
-                end: "+=100%", 
-                scrub: true, 
-                once: true,
-            }
-        });
-
-        gsap.from(".group_3", {
-            y:-400,
-            opacity:0,
-            scrollTrigger:{
-                trigger:'.video_box',
-                start: "bottom bottom+=80%",
-                end: "+=150%",
-                scrub: true, 
-                once: true,
-            }
-        });
-
-        gsap.from(".group_4", {
-            y:-400,
-            opacity:0,
-            scrollTrigger:{
-                trigger:'.video_box',
-                start: "bottom bottom+=50%",
-                end: "+=100%", 
-                scrub: true, 
-                once: true,
-            }
-        });
-
-        gsap.from(".group_4", {
-            scrollTrigger:{
-                trigger:'.video_box',
-                start: "bottom bottom+=50%",
-                end: "+=100%", 
-                scrub: true, 
-                once: true,
-            }
-        });
     }else{
-        if(ani1 != null){
-            ani1.resume();
-            ani2.resume();
-            ani3.resume();
-        }
+        ani1.resume();
+        ani2.resume();
+        ani3.resume();
     }
     
 
     
 
-    var aivsImg =  TweenMax.staggerTo(".anniversary_list figure img", 0.5, {y:10, scale:0.95,  repeat:-1, yoyo:true}, 0.2).pause();
+    var aivsImg  =  TweenMax.staggerTo(".anniversary_list figure img", 0.5, {y:10, scale:0.95,  repeat:-1, yoyo:true}, 0.2).pause();
+    var numerAct = 0;
+
     ScrollTrigger.create({
         trigger: ".anniversary_list",
         start: "top-=200% bottom",
         end: "bottom top",
         onEnter: function(){
             if(aivsImg != null){
-                aivsImg.resume();
+                aivsImg.delay(1.5).resume();
             } 
+            if(numerAct == 0){
+                numerAct = 1;
+                $(".number").counterUp({
+                    delay: 10,
+                    time: 1000
+                });
+            }
         },
         onEnterBack: function(){
             if(aivsImg != null){
@@ -827,8 +863,8 @@
     });
 
     var graphBar =  gsap.timeline()
-                        .staggerFrom('.ani_grapth', 1, {autoAlpha: 0, y: 50, x:0}, 0.3)
-                        .staggerFrom(".graph .bar", 0.5, {height:0}, 0.4).pause(0);
+                        .staggerFrom('.ani_grapth', 0.5, {autoAlpha: 0, y: 50, x:0}, 0.2)
+                        .staggerFrom(".graph .bar", 0.5, {height:0}, 0.2).pause(0);
 
     ScrollTrigger.create({
         trigger: ".graph_box2",
@@ -855,8 +891,10 @@
         },
     });
 
-    gsap.set('.quiz .num',{scale:0.9});
+    gsap.set('.quiz .num',{scale:0.95});
+    gsap.set('.quiz_text_box img', {rotate:-15, transformOrigin:'center center'})
     var quizAni =  gsap.timeline()
+                        .from('.quiz_text_box img', 1.5, {rotate:15,  repeat:-1, yoyo:true}, 0.2)
                         .staggerTo('.quiz .num', 0.5, {scale:1.2,  repeat:-1, yoyo:true}, 0.2).pause();
 
     ScrollTrigger.create({
@@ -944,6 +982,7 @@
     }).on('click', function(){
         var n = $(this).data('num').split(' ');
         $('body').css('overflow', 'hidden');
+        gsap.set('.th30',{width:'calc(100% - ' + scrollWidth + 'px)'});
         $('.quiz_popup_wrap').fadeIn();
         $.each(n, function (index, item) {
             var className = ' .'+item;
@@ -951,6 +990,8 @@
         });
 
     });
+
+
     $('.quiz_btn').on('click', function(){
         $('.quiz_popup_wrap .questions').each(function (index, item) {
             console.log(item);
@@ -1008,23 +1049,71 @@
         });
         $('.quiz_popup_wrap').fadeOut(function(){
             $('body').css('overflow', 'visible');
+            gsap.set('.th30',{width:'100%'});
             $('.quiz_popup_wrap .questions').hide().removeClass('on');;
         });
     });
     $('.quiz_popup_close').on('click', function(){
         $('.quiz_popup_wrap').fadeOut(function(){
             $('body').css('overflow', 'visible');
+            gsap.set('.th30',{width:'100%'});
             $('.quiz_popup_wrap .questions').hide().removeClass('on');;
         });
     });
     $('.attend_popup_close').on('click', function(){
         $('body').css('overflow', 'visible');
+        gsap.set('.th30',{width:'100%'});
         $('.attend_popup_wrap').fadeOut();
     });
     $('.attend_btn').on('click', function(){
         $('body').css('overflow', 'hidden');
+        gsap.set('.th30',{width:'calc(100% - ' + scrollWidth + 'px)'});
         $('.attend_popup_wrap').fadeIn();
     });
+    
+
+    
+    var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var youtubePlayer;
+
+        function onYouTubeIframeAPIReady() {
+            youtubePlayer = new YT.Player('player', {
+                width: '640',
+                height: '360',
+                videoId: 'lCAfKBBYzdY',
+                playerVars: {
+                    rel: 0 //관련영상 표시하지 않기. 
+                }, 
+                events: { 
+                    'onReady': onPlayerReady, //로딩할때 이벤트 실행 
+                } 
+            });
+        }
+
+        function onPlayerReady(event) {
+            $('.video_btn').addClass('on');
+            $('.video_loding').remove();
+        } 
+        function stopVideo() {
+            youtubePlayer.stopVideo();
+        }
+
+        function playVideo() {
+            youtubePlayer.playVideo(); //재생 
+        }
+
+        var box = document.querySelector('body');
+
+        $('.video_btn').on('click', function(){
+            playVideo();
+            $('.video_img').hide();
+            $(this).hide();
+    });
+    
+        
 </script>
 
 </body>

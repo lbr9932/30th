@@ -178,7 +178,63 @@ $_color3 : #ffcc1c;
         }
     }
 }
-
+                    
+.h{
+    &{
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        background-color: #fff;
+        z-index: 99;
+        
+    }
+    &_wrap{
+        padding:0 rem(40);
+        margin: 0 auto;
+        max-width: rem(1920);
+        
+    }
+    img{
+        width: rem(200);
+    }
+    ul{
+        font-size: 0;
+        li{
+            margin-left: rem(35);
+            display: inline-block;
+            letter-spacing: -0.05em;
+            font-size: rem(18);
+            line-height: em(34);
+            padding-top: rem(33);
+            padding-bottom: rem(33);
+            transition: padding 0.3s;
+        }
+    }
+    &._fixed{
+        border-bottom: 1px solid #ddd;
+        ul{
+            li{
+                padding-top: rem(18);
+                padding-bottom: rem(18);
+            }
+        }
+    }
+    @include mob-mid{
+        &_wrap{
+            padding:0 rem(20);
+        }
+        .row{
+            height: rem(115 *0.5);
+        }
+        img{
+            width: rem(150);
+        }
+        ul{
+            display: none;
+        }
+    }
+}
 .visual{
     &_box{
         min-height: rem(600);
@@ -270,6 +326,8 @@ $_color3 : #ffcc1c;
         overflow: hidden;
         max-width: rem(1098);
         width: 95%;
+        background-color: #222;
+        
     }
     &_con{
         position: relative;
@@ -289,20 +347,40 @@ $_color3 : #ffcc1c;
         bottom:-1px;
         top:-1px;
         img, iframe{
-            width: 100%;
+            width: 100% !important;
+            height:100% !important;
             max-width: none !important;
+        }
+    }
+    &_img{
+        z-index: 1;
+    }
+    &_loding{
+        visibility: inherit !important;
+        position: absolute;
+        left: 50%;
+        top:50%;
+        z-index: 1;
+        transform: translate(-50%, -50%);
+        &.on{
+            visibility: hidden !important;
         }
     }
     &_btn{
         position: absolute;
         left: 50%;
         top:50%;
+        z-index: 1;
         @include vendor('transform', 'translate(-50%, -50%)');
         background: #fff;
         width:rem(100);
         height:rem(100);
         border-radius: 100%;
         @include vendor('transition', 'transform 0.2s');
+        visibility: hidden !important;
+        &.on{
+            visibility: inherit !important;
+        }
         &:before{
             content: '';
             display: block;
@@ -360,11 +438,16 @@ $_color3 : #ffcc1c;
         margin-bottom: em(120);
         margin-top: em(85);
     }
+    div{
+        opacity: 1;
+    }
     li{
         max-width: 25%;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
+        position: relative;
+        padding-bottom: rem(80);
         &:first-child{
             margin-left: 0;
         }
@@ -389,6 +472,13 @@ $_color3 : #ffcc1c;
             font-weight: 400;
             font-size: em(20);
             line-height: 1;
+            white-space: nowrap;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            + p{
+                transform: translate(-50%,105%);
+            }
             b{
                 margin-left: em(5, 40);
                 font-size: em(40, 20);
@@ -417,6 +507,7 @@ $_color3 : #ffcc1c;
         }
         li{
             margin-top: em(50);
+            padding-bottom: rem(40);
             img{
                 max-width: rem(120);
                 margin: 0 auto;
@@ -467,6 +558,11 @@ $_color3 : #ffcc1c;
             margin-right: auto;
             margin-bottom: em(-38, 18);
             font-size: em(18, 16);
+            transform-origin: center bottom;
+            transition: transform 0.3s;
+            &:hover{
+                transform: scale(1.05);
+            }
             &:first-child{
                 margin-left: 0;
             }
@@ -487,6 +583,7 @@ $_color3 : #ffcc1c;
         border-top-right-radius: rem(500);
         overflow: hidden;
         position: relative;
+        
         .bar{
             display: block;
             position: absolute;
@@ -499,6 +596,7 @@ $_color3 : #ffcc1c;
             background-image: -webkit-linear-gradient( 90deg, rgb(52,97,215) 0%, rgb(92,43,206) 100%);
             background-image: -ms-linear-gradient( 90deg, rgb(52,97,215) 0%, rgb(92,43,206) 100%);
         }
+        
     }
     &_txt{
         display: block;
@@ -526,8 +624,8 @@ $_color3 : #ffcc1c;
             margin-bottom: em(100, 16);
             min-width: 100%;
             width: auto;
-            margin-left: rem(-30);
-            margin-right: rem(-30);
+            margin-left: rem(-20);
+            margin-right: rem(-20);
         }
         &{
             width: 100%;
@@ -846,7 +944,7 @@ $_color3 : #ffcc1c;
         background-color: $_bg;
         text-align: left;
         &_text{
-            padding: em(65) 0 0 em(90);
+            padding: em(65) 0 em(65) em(90);
             h2{
                 font-size: em(22, 16);
                 line-height: em(32, 22);
@@ -1080,8 +1178,8 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
             }
             &.active{
                 &::before{
-                    border-color: #ccc;
-                    background: #e2e6ec;
+                    border-color: #292a2c;
+                    background: #535353;
                 }
             }
         }
@@ -1280,8 +1378,8 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
             }
         }
         .num{
-            width: em(16);
-            line-height: em(16);
+            width: em(16,12);
+            line-height: em(16,12);
             font-size: em(12);
         }
     
@@ -1294,7 +1392,6 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
                 height: em(50, 15);
                 font-size: em(15, 16);
                 line-height: em(25, 15);
-                margin-top: em(10, 15);
             }
             &_box{
                 img{
@@ -1352,6 +1449,7 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
             }
         }
         &_con2{
+            overflow: hidden;
             width: 100%;
             background-image: -moz-linear-gradient( -15deg, rgb(52,97,215) 0%, rgb(92,43,206) 100%);
             background-image: -webkit-linear-gradient( -15deg, rgb(52,97,215) 0%, rgb(92,43,206) 100%);
@@ -1460,8 +1558,8 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
         position: absolute;
         top:em(660, 16);
         height: em(455, 16);
-        left:0;
-        
+        left:em(-30, 16);
+        width: em(320, 16);
         &_1{
             position: absolute;
             right: 0;
@@ -1494,7 +1592,7 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
         position: absolute;
         top:em(724, 16); 
         height: em(530, 16);
-        right:0;
+        right:em(30, 16);
         width: em(320, 16);
         &_1{
             position: absolute;
@@ -1527,7 +1625,7 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
         position: absolute;
         top:em(1860, 16); 
         height: em(360, 16);
-        left:0;
+        left:em(-30, 16);
         width: em(320, 16);
         &_1{
             position: absolute;
@@ -1554,7 +1652,7 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
         position: absolute;
         top:em(1690, 16); 
         height: em(970, 16);
-        right:0;
+        right:em(30, 16);
         width: em(320, 16);
         &_1{
             position: absolute;
@@ -1578,13 +1676,61 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
         }
     }
     @include pc-small {
-        font-size: rem(10);
+        font-size: rem(8);
+        .group_1{
+            top:80vh;
+        }
+    
+        .group_2{
+            top:90vh;
+        }
+    
+        .group_3{
+            top:270vh;
+        }
+    
+        .group_4{
+            top:240vh;
+
+        }
     }
     @include tab {
-        font-size: rem(8);
+        .group_1{
+            top:rem(940);
+        }
+    
+        .group_2{
+            top:rem(1100);
+        }
+    
+        .group_3{
+            top:rem(3100);
+        }
+    
+        .group_4{
+            top:rem(2400);
+
+        }
+        
     }
-    @include mob {
-        font-size: rem(8);
+    @include mob-mid {
+        font-size: rem(6);
+        .group_1{
+            top:rem(940 * 0.5);
+        }
+    
+        .group_2{
+            top:rem(1100 * 0.5);
+        }
+    
+        .group_3{
+            top:rem(3100 * 0.5);
+        }
+    
+        .group_4{
+            top:rem(2400 * 0.5);
+
+        }
     }
 }
 
@@ -1696,6 +1842,54 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
         @include btn.item(20);
         @include btn.size(20, 70, 70);
         @include btn.color(#ffa92e, #fff, #ffa92e);
+    }
+    @include mob-mid {
+        &_box{
+            max-width: rem(295);
+        }
+        &_tit{
+            &_box{
+                height: rem(50);
+                font-size: em(15, 16);
+                padding-left: em(15, 15);
+                padding-right: em(15, 15);
+            }
+        }
+        &_con{
+            &_scroll{
+                padding:rem(10) rem(20) rem(20);
+                max-height: calc(90vh - #{rem(50)} );
+            }
+    
+            ul{
+                font-size: em(13, 16);
+                > li{
+                    margin-top: em(8, 13);
+                    .quzi_inp{
+                        display: block;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        &_inp{
+            @include form.size(13, 220, 34);
+            width: 100%;
+            max-width: none;
+        }
+        &_button{
+            @include btn.size(13, 120, 35);
+            &_box{
+                margin-top: rem(15);
+            }
+        }
+        &_close{
+            @include btn.size(15, 50, 50);
+            svg{
+                width: rem(13);
+                height: rem(13);
+            }
+        }
     }
 }
 
@@ -1850,5 +2044,152 @@ $_quiz : (1 : #ec4a4a, 2 : #48ac35, 3 : #378ae7, 4 : #891edb);
         @include btn.size(20, 70, 70);
         @include btn.color(#4c20b1, #fff, #4c20b1);
         border-width: 0;
+    }
+    @include mob-mid {
+        &_box{
+            width: 90%;
+        }
+        &_tit{
+            &_box{
+                height: rem(50);
+                font-size: em(15, 16);
+                padding-left: em(15, 15);
+                padding-right: em(15, 15);
+            }
+        }
+        &_con{
+            &_scroll{
+                padding:rem(10) rem(20) rem(20);
+                max-height: calc(90vh - #{rem(50)} );
+            }
+            &{
+                font-size: rem(13);
+            }
+            
+            .fm_ch {
+                @include form.size-chrd(15, 14, 3);
+            }
+            table{
+                th{
+                    width: rem(110);
+                    padding: rem(10) rem(10) ;
+                    font-size: rem(13);
+                }
+                td{
+                    padding: rem(10) rem(10);
+                    font-size: rem(13);
+                }
+            }
+        }
+        
+        &_inp{
+            @include form.size(13, 220, 35);
+            width: 100%;
+            max-width: none;
+        }
+        &_fm{
+            label{
+                font-size: rem(13);
+            }
+        }
+        &_phon{
+            input, select{
+                @include form.size(13, 220, 35);
+                padding-left: 1em;
+                padding-right: 1em;
+                width: 100%;
+            }
+            select{
+                background-size: rem(20);
+            }
+        }
+        &_button{
+            @include btn.size(13, 240, 50);
+            width: 100%;
+            display: block;
+            max-width: none;
+            &_box{
+                margin-top: rem(25);
+            }
+        }
+        &_close{
+            @include btn.size(15, 50, 50);
+            svg{
+                width: rem(13);
+                height: rem(13);
+            }
+        }
+    }
+}
+
+.dots {
+position: relative;
+width: 100px;
+height: 100px;
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+.dot {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+}
+
+.dot8 .dot {
+animation: anim8 1s ease alternate infinite;
+border-radius: 50%;
+}
+
+.dot8 .dot:nth-child(1) {
+animation-delay: 0.25s;
+}
+
+.dot8 .dot:nth-child(2) {
+animation-delay: 0.5s;
+}
+
+.dot8 .dot:nth-child(3) {
+animation-delay: 0.75s;
+}
+
+.dot8 .dot:nth-child(4) {
+animation-delay: 1s;
+}
+
+@keyframes anim8 {
+0% {
+    transform: translateZ(-1400px) translateY(20px);
+    filter: blur(0);
+    opacity: 1;
+}
+
+100% {
+    transform: translateZ(0) translateY(0);
+    filter: blur(10px);
+    opacity: 0;
+}
+}
+
+.load{
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    height: 100vw;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%) rotate(-45deg) scale(2);
+    .box{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        transform: translateY(-50%);
+        top:50%;
+        left:0%;
+        background-color: $_color2;
+    }
+    .box2{
+        left:auto;
+        right:0%;
     }
 }
